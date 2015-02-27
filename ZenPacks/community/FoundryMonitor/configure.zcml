@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <configure
+        xmlns="http://namespaces.zope.org/zope"
+        xmlns:browser="http://namespaces.zope.org/browser"
+        xmlns:zcml="http://namespaces.zope.org/zcml">
+        <configure zcml:condition="installed Products.Zuul">
+
+            <include package="Products.ZenUtils.extdirect.zope" file="meta.zcml"/>
+
+
+            <!-- ZenPack Info -->
+
+            <browser:directRouter
+                name="FoundryMonitor_router"
+                for="*"
+                class="ZenPacks.community.FoundryMonitor.routers.FoundryMonitorRouter"
+                namespace="Zenoss.remote"
+                permission="zenoss.View"
+            />
+    
+            <adapter
+                name="FoundryMonitorAdapter"
+                provides="ZenPacks.community.FoundryMonitor.interfaces.IFoundryMonitorFacade"
+                for="*"
+                factory="ZenPacks.community.FoundryMonitor.facades.FoundryMonitorFacade"
+            />
+                
+            <browser:resourceDirectory
+                    name="FoundryMonitor"
+                    directory="resources"
+            />
+
+            <!-- Component Info -->
+            <adapter factory="ZenPacks.community.FoundryMonitor.info.snChasFanInfo"
+                for="ZenPacks.community.FoundryMonitor.snChasFan.snChasFan"
+                provides="ZenPacks.community.FoundryMonitor.interfaces.IsnChasFanInfo"
+            />
+    
+            <browser:viewlet
+                name="js-snChasFan"
+                paths="/++resource++FoundryMonitor/snchasfan.js"
+                weight="10"
+                manager="Products.ZenUI3.browser.interfaces.IJavaScriptSrcManager"
+                class="Products.ZenUI3.browser.javascript.JavaScriptSrcBundleViewlet"
+                permission="zope2.Public"
+            />
+
+            <utility provides="zope.schema.interfaces.IVocabularyFactory"
+                component=".info.snChasFangetEventClassesVocabulary"
+                name="snChasFangetEventClasses"
+            />
+
+            <!-- Component Info -->
+            <adapter factory="ZenPacks.community.FoundryMonitor.info.snAgentCpuInfo"
+                for="ZenPacks.community.FoundryMonitor.snAgentCpu.snAgentCpu"
+                provides="ZenPacks.community.FoundryMonitor.interfaces.IsnAgentCpuInfo"
+            />
+    
+            <browser:viewlet
+                name="js-snAgentCpu"
+                paths="/++resource++FoundryMonitor/snagentcpu.js"
+                weight="10"
+                manager="Products.ZenUI3.browser.interfaces.IJavaScriptSrcManager"
+                class="Products.ZenUI3.browser.javascript.JavaScriptSrcBundleViewlet"
+                permission="zope2.Public"
+            />
+
+            <utility provides="zope.schema.interfaces.IVocabularyFactory"
+                component=".info.snAgentCpugetEventClassesVocabulary"
+                name="snAgentCpugetEventClasses"
+            />
+
+            <!-- Component Info -->
+            <adapter factory="ZenPacks.community.FoundryMonitor.info.snChasPwrSupplyInfo"
+                for="ZenPacks.community.FoundryMonitor.snChasPwrSupply.snChasPwrSupply"
+                provides="ZenPacks.community.FoundryMonitor.interfaces.IsnChasPwrSupplyInfo"
+            />
+    
+            <browser:viewlet
+                name="js-snChasPwrSupply"
+                paths="/++resource++FoundryMonitor/snchaspwrsupply.js"
+                weight="10"
+                manager="Products.ZenUI3.browser.interfaces.IJavaScriptSrcManager"
+                class="Products.ZenUI3.browser.javascript.JavaScriptSrcBundleViewlet"
+                permission="zope2.Public"
+            />
+
+            <utility provides="zope.schema.interfaces.IVocabularyFactory"
+                component=".info.snChasPwrSupplygetEventClassesVocabulary"
+                name="snChasPwrSupplygetEventClasses"
+            />
+
+            <!-- Component Info -->
+            <adapter factory="ZenPacks.community.FoundryMonitor.info.snAgentTempInfo"
+                for="ZenPacks.community.FoundryMonitor.snAgentTemp.snAgentTemp"
+                provides="ZenPacks.community.FoundryMonitor.interfaces.IsnAgentTempInfo"
+            />
+    
+            <browser:viewlet
+                name="js-snAgentTemp"
+                paths="/++resource++FoundryMonitor/snagenttemp.js"
+                weight="10"
+                manager="Products.ZenUI3.browser.interfaces.IJavaScriptSrcManager"
+                class="Products.ZenUI3.browser.javascript.JavaScriptSrcBundleViewlet"
+                permission="zope2.Public"
+            />
+
+            <utility provides="zope.schema.interfaces.IVocabularyFactory"
+                component=".info.snAgentTempgetEventClassesVocabulary"
+                name="snAgentTempgetEventClasses"
+            />
+
+        </configure>
+    </configure>
+
