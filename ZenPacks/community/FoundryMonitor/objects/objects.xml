@@ -969,6 +969,9 @@ AVERAGE
 </object>
 </tomanycont>
 <object id='LB' module='Products.ZenModel.DeviceClass' class='DeviceClass'>
+<property visible="True" type="lines" id="zCollectorPlugins" >
+['zenoss.snmp.NewDeviceMap', 'zenoss.snmp.InterfaceMap', 'zenoss.snmp.CDPLLDPDiscover', 'ManagedEntityRelations.RouteMap', 'ManagedEntityRelations.ComboIpServiceMap', 'FoundryMonitor.snChasPwrSupplyMap', 'FoundryMonitor.snChasFanMap', 'FoundryMonitor.snAgentTempMap', 'FoundryMonitor.snAgentCpuMap', 'FoundryLB.snL4VirtualServerMap', 'FoundryLB.snL4RealServerMap', 'FoundryLB.snL4BindMap']
+</property>
 </object>
 </object>
 <!-- ('', 'zport', 'dmd', 'Devices', 'rrdTemplates', 'snAgentCpu') -->
